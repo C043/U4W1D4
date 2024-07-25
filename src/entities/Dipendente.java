@@ -2,14 +2,18 @@ package entities;
 
 import java.util.Random;
 
-public class Dipendente {
+public abstract class Dipendente {
     private int matricola;
     private double stipendio;
     private Dipartimenti dipartimento;
+    private String name;
+    private String surname;
 
-    public Dipendente(Dipartimenti dipartimento) {
+    public Dipendente(Dipartimenti dipartimento, String name, String surname) {
         Random rand = new Random();
         this.matricola = rand.nextInt(1000);
+        this.name = name;
+        this.surname = surname;
         switch (dipartimento) {
             case AMMINISTRAZIONE -> this.stipendio = 100000;
             case PRODUZIONE -> this.stipendio = 1000;
@@ -25,6 +29,14 @@ public class Dipendente {
         return stipendio;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
     public Dipartimenti getDipartimento() {
         return dipartimento;
     }
@@ -32,4 +44,6 @@ public class Dipendente {
     public void setDipartimento(Dipartimenti dipartimento) {
         this.dipartimento = dipartimento;
     }
+
+    public abstract void calculateSalary();
 }
