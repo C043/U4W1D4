@@ -2,7 +2,7 @@ package entities;
 
 import java.util.Random;
 
-public abstract class Dipendente {
+public abstract class Dipendente implements Lavoratore {
     private int matricola;
     private double stipendio;
     private Dipartimenti dipartimento;
@@ -46,4 +46,9 @@ public abstract class Dipendente {
     }
 
     public abstract void calculateSalary();
+
+    @Override
+    public void checkIn(int ora) {
+        System.out.println("Il dipendente " + this.name + " " + this.surname + " ha iniziato a lavorare alle ore " + ora);
+    }
 }
